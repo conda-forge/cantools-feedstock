@@ -1,6 +1,6 @@
 {% set name = "cantools" %}
-{% set version = "20.6.0" %}
-{% set sha256 = "1cc876ec1c8de17bafc6f631292d9d71902da06aae6a394ec6fc3f4f5518389f" %}
+{% set version = "28.8.0" %}
+{% set sha256 = "4cec1ced8f9fdeb023d2281d89ada524453d6936acee56f897877652f9a8ff99" %}
 
 package:
   name: {{ name|lower }}
