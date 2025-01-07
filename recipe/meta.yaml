@@ -8,30 +8,32 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv "
   entry_points:
     - cantools=cantools.__init__:_main
 
 requirements:
-  build:
-    - python
+  host:
+    - python {{ python_min }}
     - pip
     - bitstruct>=3.7.0
     - pyparsing>=2.0.3
     - python-can>=2.1.0
   run:
-    - python
+    - python >={{ python_min }}
     - bitstruct>=3.7.0
     - pyparsing>=2.0.3
     - python-can>=2.1.0
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - cantools
 
