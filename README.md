@@ -1,27 +1,35 @@
-About cantools
-==============
+About cantools-feedstock
+========================
 
-Home: https://github.com/eerimoq/cantools
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cantools-feedstock/blob/main/LICENSE.txt)
+
+Home: https://github.com/cantools/cantools
 
 Package license: MIT
 
-Feedstock license: BSD 3-Clause
+Summary: CAN bus tools
 
-Summary: CAN BUS tools.
+Development: https://github.com/cantools/cantools
 
-CAN BUS tools
-- `DBC`_, `KCD`_ and SYM file parsing.
-- CAN message encoding and decoding.
-- Simple and extended signal multiplexing.
-- ``candump`` output decoder.
-- Node `tester`_.
+Documentation: https://cantools.readthedocs.io/
 
+cantools is a collection of CAN bus tools supporting DBC, KCD, SYM,
+ARXML, CDD and other database formats, with encoding, decoding and
+command-line utilities.
 
 Current build status
 ====================
 
-All platforms:
-[![noarch](https://img.shields.io/circleci/project/github/conda-forge/cantools-feedstock/master.svg?label=noarch)](https://circleci.com/gh/conda-forge/cantools-feedstock)
+
+<table><tr>
+    <td>All platforms:</td>
+    <td>
+      <a href="https://github.com/conda-forge/cantools-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/cantools-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
+      </a>
+    </td>
+  </tr>
+</table>
 
 Current release info
 ====================
@@ -37,23 +45,96 @@ Installing `cantools` from the `conda-forge` channel can be achieved by adding `
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `cantools` can be installed with:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda install cantools
 ```
 
-It is possible to list all of the versions of `cantools` available on your platform with:
+</details>
+
+<details>
+<summary>With mamba</summary>
+
+```
+mamba install cantools
+```
+
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add cantools
+# for installing globally
+pixi global install cantools
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `cantools` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search cantools --channel conda-forge
 ```
 
+</details>
+
+<details>
+<summary>With mamba</summary>
+
+```
+mamba search cantools --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search cantools --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
+
+```
+# Search all versions available on your platform:
+mamba repoquery search cantools --channel conda-forge
+
+# List packages depending on `cantools`:
+mamba repoquery whoneeds cantools --channel conda-forge
+
+# List dependencies of `cantools`:
+mamba repoquery depends cantools --channel conda-forge
+```
+
+</details>
+
 
 About conda-forge
 =================
+
+[![Powered by
+NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](https://numfocus.org)
 
 conda-forge is a community-led conda channel of installable packages.
 In order to provide high-quality builds, the process has been automated into the
@@ -63,17 +144,19 @@ for each of the installable packages. Such a repository is known as a *feedstock
 A feedstock is made up of a conda recipe (the instructions on what and how to build
 the package) and the necessary configurations for automatic building using freely
 available continuous integration services. Thanks to the awesome service provided by
-[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/)
-and [TravisCI](https://travis-ci.org/) it is possible to build and upload installable
-packages to the [conda-forge](https://anaconda.org/conda-forge)
-[Anaconda-Cloud](https://anaconda.org/) channel for Linux, Windows and OSX respectively.
+[Azure](https://azure.microsoft.com/en-us/services/devops/), [GitHub](https://github.com/),
+[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
+[Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
+it is possible to build and upload installable packages to the
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
+channel for Linux, Windows and OSX respectively.
 
-To manage the continuous integration and simplify feedstock maintenance
+To manage the continuous integration and simplify feedstock maintenance,
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
-For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
+For more information, please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
@@ -100,12 +183,18 @@ merged, the recipe will be re-built and uploaded automatically to the
 everybody to install and use from the `conda-forge` channel.
 Note that all branches in the conda-forge/cantools-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
-on branches in forks and branches in the main repository should only be used to
+on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
  * If the version of a package **is not** being increased, please add or increase
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string).
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string).
  * If the version of a package **is** being increased, please remember to return
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string)
    back to 0.
+
+Feedstock Maintainers
+=====================
+
+* [@danielhrisca](https://github.com/danielhrisca/)
+* [@wolfv](https://github.com/wolfv/)
