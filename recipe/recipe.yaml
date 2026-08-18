@@ -1,0 +1,66 @@
+schema_version: 1
+
+context:
+  version: "41.0.2"
+
+package:
+  name: cantools
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/c/cantools/cantools-${{ version }}.tar.gz
+  sha256: 5c91a66e5e03a4ac5727f20207df1da5681748a154c2bc85ef532fef9e0109d1
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  python:
+    entry_points:
+      - cantools = cantools.__init__:_main
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools >=68
+    - setuptools-scm >=8
+  run:
+    - python >=${{ python_min }}
+    - argparse-addons
+    - bitstruct >=8.16.1
+    - crccheck
+    - diskcache
+    - python-can >=4.6.0
+    - textparser >=0.21.1
+
+tests:
+  - python:
+      imports:
+        - cantools
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+  - requirements:
+      run:
+        - pip
+    script:
+      - cantools --help
+
+about:
+  homepage: https://github.com/cantools/cantools
+  documentation: https://cantools.readthedocs.io/
+  repository: https://github.com/cantools/cantools
+  license: MIT
+  license_file: LICENSE
+  summary: CAN bus tools
+  description: |
+    cantools is a collection of CAN bus tools supporting DBC, KCD, SYM,
+    ARXML, CDD and other database formats, with encoding, decoding and
+    command-line utilities.
+
+extra:
+  recipe-maintainers:
+    - danielhrisca
+    - wolfv
