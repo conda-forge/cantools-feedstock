@@ -33,6 +33,9 @@ requirements:
     - diskcache
     - python-can >=4.6.0
     - textparser >=0.21.1
+  run_constraints:
+    # python-can 4.6.1 requires wrapt ~=1.10, but its conda package lacks the upper bound.
+    - wrapt <2
 
 tests:
   - python:
