@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "44.1.0"
+  version: "44.2.0"
 
 package:
   name: cantools
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/c/cantools/cantools-${{ version }}.tar.gz
-  sha256: ddb1538b8ec9353d791da089ba30e1e46ec95f54a55276bbdd3da096876a0a82
+  sha256: 8c5e7928e0ebd84b0ea57a7b5ce68cc4aead62a4f1a84ef0b287b61d4a5198bf
 
 build:
   number: 0
